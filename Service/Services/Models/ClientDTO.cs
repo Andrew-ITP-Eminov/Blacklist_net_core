@@ -2,7 +2,7 @@
 namespace Service.Services.Models
 {
     public class ClientDTO
-    {
+    {   
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public int? AgreementNumber { get; set; }

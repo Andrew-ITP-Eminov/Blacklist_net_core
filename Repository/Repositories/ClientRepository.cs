@@ -17,15 +17,7 @@ namespace WebApplication.Repository
         {
             if (db != null)
             {
-                return await (from p in db.Client.Include(c => c.PersonInformation)
-                              select new Client
-                              {
-                                  Id = p.Id,
-                                  CompanyName = p.CompanyName,
-                                  AgreementNumber = p.AgreementNumber,
-                                  ContactPerson = p.ContactPerson,
-                                  PersonInformation = p.PersonInformation
-                              }).ToListAsync();
+                return await db.Client.Include(c => c.PersonInformation).ToListAsync();
             }
             
             return null;
@@ -34,17 +26,7 @@ namespace WebApplication.Repository
         {
             if (db != null)
             {
-                return await (from p in db.Client
-                              where p.Id == clientId
-                              select new Client
-                              {
-                                  Id = p.Id,
-                                  CompanyName = p.CompanyName,
-                                  AgreementNumber = p.AgreementNumber,
-                                  ContactPerson = p.ContactPerson,
-                                  PersonInformation = p.PersonInformation
-
-                              }).FirstOrDefaultAsync();
+                return await db.Client.Include(c => c.PersonInformation).FirstOrDefaultAsync(c => c.Id == clientId);
             }
             return null;
         }
