@@ -1,4 +1,5 @@
-﻿using Service.Services;
+﻿using AutoMapper;
+using Service.Services;
 using Service.Services.Models;
 using System;
 using System.Collections.Generic;
@@ -18,64 +19,125 @@ namespace WebApplication.Services
 
         public async Task<int> UpdateClientDTO(ClientDTO client)
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ClientDTO, Client>()
+                      .ForMember(d => d.PersonInformation, opt => opt.MapFrom(c => new PersonInformation
+                      {
+                          Phone = c.Phone,
+                          Status = c.Status,
+                          Email = c.Email,
+                          Note = c.Note,
+                          INN = c.INN,
+                      })));
+
+            var mapper = new Mapper(config);
+            Client data = mapper.Map<ClientDTO, Client>(client);
+
+            return await _clientRepository.UpdateClient(data);
+
+            /*
             var model = new Client
             {
-                CompanyName = client.ClientCompanyName,
-                AgreementNumber = client.ClientAgreementNumber,
-                ContactPerson = client.ClientContactPerson,
+                CompanyName = client.CompanyName,
+                AgreementNumber = client.AgreementNumber,
+                ContactPerson = client.ContactPerson,
                 PersonInformation =
                 {
-                    Phone = client.ClientPhone,
-                    Status = client.ClientStatus,
-                    Email = client.ClientEmail,
-                    Note = client.ClientNote,
-                    INN = client.ClientINN,
+                    Phone = client.Phone,
+                    Status = client.Status,
+                    Email = client.Email,
+                    Note = client.Note,
+                    INN = client.INN,
                 }
             };
             return await _clientRepository.UpdateClient(model);
-
+            */
         }
 
-        public Task<int> DeleteClientDTO(int? clientId)
+        public async Task<int> DeleteClientDTO(int? clientId)
         {
-            throw new System.NotImplementedException();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Client, ClientDTO>());
+                             
+            var mapper = new Mapper(config);
+            var client = mapper.Map<int>(await _clientRepository.DeleteClient(clientId));
+            return client;
+
+
+            // return await _clientRepository.DeleteClient(clientId);
         }
 
         public async Task<int> AddClientDTO(ClientDTO client)
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ClientDTO, Client>()
+                      .ForMember(d => d.PersonInformation, opt => opt.MapFrom(c => new PersonInformation {
+                          Phone = c.Phone,
+                          Status = c.Status,
+                          Email = c.Email,
+                          Note = c.Note,
+                          INN = c.INN,
+                      })));
+
+            var mapper = new Mapper(config);
+            Client data = mapper.Map<ClientDTO, Client>(client);
+
+            return await _clientRepository.AddClient(data);
+
+
+            /*
             var model = new Client {
-                CompanyName = client.ClientCompanyName,
-                AgreementNumber = client.ClientAgreementNumber,
-                ContactPerson = client.ClientContactPerson,
+                CompanyName = client.CompanyName,
+                AgreementNumber = client.AgreementNumber,
+                ContactPerson = client.ContactPerson,
                 PersonInformation =
                 {
-                    Phone = client.ClientPhone,
-                    Status = client.ClientStatus,
-                    Email = client.ClientEmail,
-                    Note = client.ClientNote,
-                    INN = client.ClientINN,
+                    Phone = client.Phone,
+                    Status = client.Status,
+                    Email = client.Email,
+                    Note = client.Note,
+                    INN = client.INN,
                 }
             };
-
-          return await _clientRepository.AddClient(model);
+            return await _clientRepository.AddClient(model);
+            */
         }
         public async Task<ClientDTO> GetClientDTO(int? clientId)
         {
-            var model = await _clientRepository.GetClient(clientId);
-            var dto = new ClientDTO {
-                ClientCompanyName = model.CompanyName,
-                ClientAgreementNumber = model.AgreementNumber,
-                ClientContactPerson = model.ContactPerson,
-                ClientPhone = model.PersonInformation.Phone,
-                ClientStatus = model.PersonInformation.Status,
-                ClientEmail = model.PersonInformation.Email,
-                ClientNote = model.PersonInformation.Note,
-                ClientINN = model.PersonInformation.INN,
-            };
-            return dto;
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Client, ClientDTO>()
+                               .ForMember("Phone", opt => opt.MapFrom(c => c.PersonInformation.Phone))
+                               .ForMember("Status", opt => opt.MapFrom(c => c.PersonInformation.Status))
+                               .ForMember("Email", opt => opt.MapFrom(c => c.PersonInformation.Email))
+                               .ForMember("Note", opt => opt.MapFrom(c => c.PersonInformation.Note))
+                               .ForMember("INN", opt => opt.MapFrom(c => c.PersonInformation.INN)));
+
+            var mapper = new Mapper(config);
+            var clients = mapper.Map<ClientDTO>(await _clientRepository.GetClient(clientId));
+            return clients;
+
+            /*
+             var model = await _clientRepository.GetClient(clientId);
+             var dto = new ClientDTO {
+                 CompanyName = model.CompanyName,
+                 AgreementNumber = model.AgreementNumber,
+                 ContactPerson = model.ContactPerson,
+                 Phone = model.PersonInformation.Phone,
+                 Status = model.PersonInformation.Status,
+                 Email = model.PersonInformation.Email,
+                 Note = model.PersonInformation.Note,
+                 INN = model.PersonInformation.INN,
+             };
+             return dto;
+             */
         }
         public async Task<List<AllClientsDTO>> GetClientsDTO()
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Client, AllClientsDTO>()
+                               .ForMember("Phone", opt => opt.MapFrom(c => c.PersonInformation.Phone))
+                               .ForMember("Status", opt => opt.MapFrom(c => c.PersonInformation.Status)));
+
+            var mapper = new Mapper(config);
+            var clients = mapper.Map<List<AllClientsDTO>>(await _clientRepository.GetClients());
+            return clients;
+
+            /*
             var model = await _clientRepository.GetClients();
             var dtos = new List<AllClientsDTO>();
 
@@ -83,17 +145,17 @@ namespace WebApplication.Services
             {
                 var dto = new AllClientsDTO
                 {
-                    ClientId = item.Id,
-                    ClientCompanyName = item.CompanyName,
-                    ClientAgreementNumber = item.AgreementNumber,
-                    ClientContactPerson = item.ContactPerson,
-                    ClientPhone = item.PersonInformation.Phone,
-                    ClientStatus = item.PersonInformation.Status,
+                    Id = item.Id,
+                    CompanyName = item.CompanyName,
+                    AgreementNumber = item.AgreementNumber,
+                    ContactPerson = item.ContactPerson,
+                    Phone = item.PersonInformation.Phone,
+                    Status = item.PersonInformation.Status,
                 };
                 dtos.Add(dto);
             }
-
             return dtos;
+            */
         }
     }
 

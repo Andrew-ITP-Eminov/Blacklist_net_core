@@ -42,6 +42,8 @@ namespace WebApplication.Repository
                                   CompanyName = p.CompanyName,
                                   AgreementNumber = p.AgreementNumber,
                                   ContactPerson = p.ContactPerson,
+                                  PersonInformation = p.PersonInformation
+
                               }).FirstOrDefaultAsync();
             }
             return null;

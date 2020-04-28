@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IF3LUQkQaS4wq4J9P+EOsrAbCSW7N5kDw2/dwuKfjc59XyyZCOxSszHTiU+WEFyzsGKcVnH0fIoa9IcbKfPlPQ==",
+  "dgSpecHash": "R94UMw/O5HJllRjpDjyqdeYPAmp273lp3LFLnWj/g3lUK+rMmAOykoWPJzzZSXegSEIti7vPuJRQwOvgoPlIYw==",
   "success": true,
   "projectFilePath": "D:\\projects\\Net Core\\CRUD_Mukesh\\Blacklist\\WebApplication\\WebApplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Andrew\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

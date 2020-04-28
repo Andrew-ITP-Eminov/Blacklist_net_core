@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Repository.Repositories;
 using WebApplication.Repository;
+using WebApplication.Services;
 //using WebApplication.Services;
 
 
@@ -26,9 +27,8 @@ namespace WebApplication
         {
             services.AddDbContext<ApplicationContext>();
             services.AddScoped<IClientRepository, ClientRepository>();
-            services.AddScoped<IDriverRepository, DriverRepository>();
+            services.AddScoped<IClientService, ClientService>();
 
-            //services.AddScoped<ClientService>();
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents

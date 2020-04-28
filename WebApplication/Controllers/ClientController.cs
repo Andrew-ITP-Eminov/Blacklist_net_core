@@ -72,6 +72,17 @@ namespace WebApplication.Controllers
         [Route("AddClient")]
         public async Task<IActionResult> AddClient([FromBody]ClientDTO model)
         {
+            var clientId = await _clientService.AddClientDTO(model);
+            if (clientId > 0)
+            {
+                return Ok(clientId);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+            /*
             if (ModelState.IsValid)
             {
                 try
@@ -95,6 +106,7 @@ namespace WebApplication.Controllers
             }
 
             return BadRequest();
+            */
         }
 
         [HttpPost]

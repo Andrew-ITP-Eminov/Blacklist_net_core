@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zzuQlSQxxZqEC/0qIQrdPmJiD8hiUTbG/HpviS5Hr3KTxgfdemsro0MROQBSGmvL9kmi00dHQEYpuX1GL22mAA==",
+  "dgSpecHash": "X+iW5Wiwzd91KVMikXtlInNLZgg2CxrAR+jx1GWeWCjyRktCObR67AsPvykd53T4EyjnXdeksmw4M8xvmAmjfQ==",
   "success": true,
   "projectFilePath": "D:\\projects\\Net Core\\CRUD_Mukesh\\Blacklist\\Service\\Service.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Andrew\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

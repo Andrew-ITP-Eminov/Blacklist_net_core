@@ -2,7 +2,6 @@ D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\bin\Debug\netstandard2.0\Serv
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\bin\Debug\netstandard2.0\Service.dll
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\bin\Debug\netstandard2.0\Service.pdb
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.csprojAssemblyReference.cache
-D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.csproj.CoreCompileInputs.cache
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.AssemblyInfoInputs.cache
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.AssemblyInfo.cs
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.dll
@@ -14,3 +13,4 @@ D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\bin\Debug\netstandard2.0\Repo
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.csproj.CopyComplete
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\bin\Debug\netstandard2.0\appsettings.json
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\bin\Debug\netstandard2.0\Repositories\Properties\launchSettings.json
+D:\projects\Net Core\CRUD_Mukesh\Blacklist\Service\obj\Debug\netstandard2.0\Service.csproj.CoreCompileInputs.cache

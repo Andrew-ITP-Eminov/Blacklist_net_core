@@ -3,14 +3,14 @@ namespace Service.Services.Models
 {
     public class ClientDTO
     {
-        public int ClientId { get; set; }
-        public string ClientCompanyName { get; set; }
-        public int? ClientAgreementNumber { get; set; }
-        public string ClientContactPerson { get; set; }
-        public string ClientPhone { get; set; }
-        public string ClientStatus { get; set; }
-        public string ClientEmail { get; set; }
-        public string ClientNote { get; set; }
-        public string ClientINN { get; set; }
+        public int Id { get; set; }
+        public string CompanyName { get; set; }
+        public int? AgreementNumber { get; set; }
+        public string ContactPerson { get; set; }
+        public string Phone { get; set; }
+        public string Status { get; set; }
+        public string Email { get; set; }
+        public string Note { get; set; }
+        public string INN { get; set; }
     }
 }

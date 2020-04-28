@@ -301,7 +301,8 @@ D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.1\Repositories\Properties\launchSettings.json
+D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csproj.CoreCompileInputs.cache
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cs
 D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cache
-D:\projects\Net Core\CRUD_Mukesh\Blacklist\WebApplication\bin\Debug\netcoreapp3.1\Repositories\Properties\launchSettings.json
