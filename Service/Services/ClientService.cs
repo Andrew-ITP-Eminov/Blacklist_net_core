@@ -127,14 +127,14 @@ namespace WebApplication.Services
              return dto;
              */
         }
-        public async Task<List<AllClientsDTO>> GetClientsDTO()
+        public async Task<List<AllClientsDTO>> GetClientsDTO(int currentPage, int PageSize)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Client, AllClientsDTO>()
                                .ForMember("Phone", opt => opt.MapFrom(c => c.PersonInformation.Phone))
                                .ForMember("Status", opt => opt.MapFrom(c => c.PersonInformation.Status)));
 
             var mapper = new Mapper(config);
-            var clients = mapper.Map<List<AllClientsDTO>>(await _clientRepository.GetClients());
+            var clients = mapper.Map<List<AllClientsDTO>>(await _clientRepository.GetClients(currentPage, PageSize)) ;
             return clients;
 
             /*
@@ -156,6 +156,17 @@ namespace WebApplication.Services
             }
             return dtos;
             */
+        }
+
+        public async Task<List<AllClientsDTO>> SearchByDTO(int currentPage, int PageSize, string Keyword)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Client, AllClientsDTO>()
+                              .ForMember("Phone", opt => opt.MapFrom(c => c.PersonInformation.Phone))
+                              .ForMember("Status", opt => opt.MapFrom(c => c.PersonInformation.Status)));
+
+            var mapper = new Mapper(config);
+            var clients = mapper.Map<List<AllClientsDTO>>(await _clientRepository.GetSearchBy(currentPage, PageSize, Keyword));
+            return clients;
         }
     }
 

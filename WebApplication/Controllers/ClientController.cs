@@ -21,12 +21,11 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        [Route("GetClients")]
-        public async Task<IActionResult> GetClients()
+        [Route("SearchBy")]
+        public async Task<IActionResult> SearchBy([FromQuery]int currentPage, [FromQuery]int PageSize, [FromQuery]string Keyword)
         {
-            try
-            {
-               var clients = await _clientService.GetClientsDTO();
+  
+                var clients = await _clientService.SearchByDTO(currentPage, PageSize, Keyword);
 
                 if (clients == null)
                 {
@@ -34,12 +33,27 @@ namespace WebApplication.Controllers
                 }
 
                 return Ok(clients);
+           
+        }
+
+        [HttpGet]
+        [Route("GetClients")]
+        public async Task<IActionResult> GetClients([FromQuery]int currentPage, [FromQuery]int PageSize)
+        {
+            try
+            {
+               var clients = await _clientService.GetClientsDTO(currentPage, PageSize);
+
+                if (clients == null)
+                {
+                    return NotFound();
+                }
+                return Ok(clients);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-            
         }
 
         [HttpGet]

@@ -7,7 +7,8 @@ namespace WebApplication.Repository
 {
     public interface IClientRepository
     {
-        Task<List<Client>> GetClients();
+        Task<List<Client>> GetClients(int currentPage, int PageSize);
+        Task<List<Client>> GetSearchBy(int currentPage, int PageSize, string Keyword);
         Task<Client> GetClient(int? clientId);
         Task<int> AddClient(Client client);
         Task<int> DeleteClient(int? clientId);

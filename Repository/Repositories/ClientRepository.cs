@@ -13,11 +13,15 @@ namespace WebApplication.Repository
         {
             db = _db;
         }
-        public async Task<List<Client>> GetClients()
+        public async Task<List<Client>> GetClients(int currentPage, int PageSize)
         {
             if (db != null)
             {
-                return await db.Client.Include(c => c.PersonInformation).ToListAsync();
+                return await db.Client.Include(c => c.PersonInformation)
+                    .OrderBy(c => c.CompanyName)
+                    .Skip((currentPage - 1) * PageSize)
+                    .Take(PageSize)
+                    .ToListAsync();
             }
             
             return null;
@@ -64,6 +68,25 @@ namespace WebApplication.Repository
                 return client.Id;
             }
             return 0;
+        }
+
+        public async Task<List<Client>> GetSearchBy(int currentPage, int PageSize, string Keyword)
+        {
+            if (db != null)
+            {
+                //return await db.Client.FromSqlRaw("SELECT * FROM Client query").ToListAsync();
+
+                return await db.Client
+                    .FromSqlRaw("SELECT t1.*, t2.Phone, t2.Status FROM Client t1 " +
+                                    "JOIN PersonInformation t2 ON t2.Id = t1.PersonInformationId " +
+                                    "WHERE t1.CompanyName LIKE {0} OR t2.Phone LIKE {0} ", "%"+Keyword+"%")
+                    .Include(c => c.PersonInformation)
+                    .Skip((currentPage - 1) * PageSize)
+                    .Take(PageSize)
+                    .ToListAsync();
+            }
+
+            return null;
         }
     }
 }
